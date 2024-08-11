@@ -48,14 +48,14 @@ By default, helpful information for setting up the mod for your modpack is logge
 
 If tabs are appearing on a screen they don't fit well with, the screen can be blacklisted:
 
-```
+```toml
 [screenOverrides]
 	"fwaystones:waystone" = false
 ```
 
 If tabs are being made for an inappropriate block, you can manually disable their tab provider:
 
-```
+```toml
 [blockProviderOverrides]
 	"cool_mod:incompatible_block" = ""
 	"really_cool_mod:*" = ""
@@ -63,7 +63,7 @@ If tabs are being made for an inappropriate block, you can manually disable thei
 
 Or manually override it to a relevant one:
 
-```
+```toml
 [blockProviderOverrides]
 	"#cool_mod:crafting_stations" = "inventory_tabs:block_unique"
 	"cool_mod:single_chest" = "inventory_tabs:block_simple"
@@ -77,7 +77,7 @@ Overrides also work for entities and items, via `[entityProviderOverrides]` and 
 
 If too many inappropriate blocks are being matched, you may want to disable the default matching logic for a provider entirely:
 
-```
+```toml
 [registryProviderDefaults]
 	"inventory_tabs:block_simple" = false
 ```
@@ -99,7 +99,7 @@ Tabs are added via registered [Tab Providers](https://github.com/sisby-folk/inve
 
 ### Addons
 
-```
+```groovy
 repositories {
 	maven { url "https://repo.sleeping.town/" }
 }
