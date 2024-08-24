@@ -20,7 +20,6 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.Rect2i;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
@@ -94,7 +93,7 @@ public class TabManager {
         blockRaycastCache.values().removeIf(timer -> !timer.validThisTick && timer.ticksInvalid >= InventoryTabs.CONFIG.blockRaycastTimeout);
         blockRaycastCache.values().forEach(RaycastCache::tick);
         if (holdTabCooldown > 0) {
-            if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), InventoryTabs.NEXT_TAB.boundKey.getCode())) {
+            if (InventoryTabs.NEXT_TAB.isPressed()) {
                 holdTabCooldown--;
             } else {
                 holdTabCooldown = 0;
@@ -305,8 +304,7 @@ public class TabManager {
         int u = BUTTON_WIDTH * (left ? 0 : 1);
         int v = BUTTON_HEIGHT * (active ? hovered ? 2 : 1 : 0);
         drawContext.drawTexture(BUTTONS_TEXTURE, rect.getX(), rect.getY(), u, v, rect.getWidth(), rect.getHeight());
-        if (hovered)
-            drawContext.drawTooltip(currentScreen.textRenderer, Text.literal((currentPage + 1) + "/" + (getMaximumPage() + 1)), (int) mouseX, (int) mouseY);
+        if (hovered) drawContext.drawTooltip(MinecraftClient.getInstance().textRenderer, Text.literal((currentPage + 1) + "/" + (getMaximumPage() + 1)), (int) mouseX, (int) mouseY);
     }
 
     public static void playClick() {
