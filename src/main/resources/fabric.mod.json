@@ -17,7 +17,6 @@
   },
   "license": "${license}",
   "icon": "assets/${modId}/icon.png",
-  "accessWidener": "${modId}.accesswidener",
   "mixins": [
     "${modId}.mixins.json"
   ],
